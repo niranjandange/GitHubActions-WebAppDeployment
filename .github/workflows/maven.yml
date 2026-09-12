@@ -1,9 +1,7 @@
 name: Web Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -22,7 +20,7 @@ jobs:
     - name: Build with Maven
       run: mvn clean package
 
-    - name: Deploy to Tomcat
-      run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/GitHubActions-WebAppDeployment/GitHubActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war 'http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/myweb_dev_action&update=true'
+    #- name: Deploy to Tomcat
+    #  run: curl -v -u ${{ secrets.TOMCAT_USERNAME }}:${{ secrets.TOMCAT_PASSWORD }} -T /home/runner/work/GitHubActions-WebAppDeployment/GitHubActions-WebAppDeployment/target/spring3-mvc-maven-xml-hello-world-3.0-SNAPSHOT.war 'http://${{ secrets.TOMCAT_HOST }}:8080/manager/text/deploy?path=/myweb_dev_action&update=true'
 
     
